@@ -25,7 +25,7 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
-      - name: Upload artifacts // Save job output (assets) for later use
+      - name: Upload artifacts // Save job assets for later use
         uses: actions/upload-artifact@v3
         with:
           name: dist-files // name of the artifact
