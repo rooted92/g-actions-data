@@ -25,6 +25,14 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+      - name: Upload artifacts // Save job output (assets) for later use
+        uses: actions/upload-artifact@v3
+        // to save the files as artifacts, we need to provide the name and path of the files to upload, using the with parameter
+        with:
+          name: dist-files // name of the artifact
+          path: |
+            dist // path to the files to upload
+            package.json // path to the files to upload
   deploy:
     needs: build
     runs-on: ubuntu-latest
