@@ -10,6 +10,7 @@ function MainContent() {
   }
 
   return (
+    // Just adding a comment here to push new branch to GitHub
     <main>
       <button onClick={toggleHelp}>{helpVisible ? 'Hide' : 'Show'} Help</button>
       {helpVisible && <HelpArea />}
