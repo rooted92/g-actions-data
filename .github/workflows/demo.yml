@@ -30,8 +30,8 @@ jobs:
         with:
           name: dist-files // name of the artifact
           path: |
-            dist // path to the files to upload
-            package.json // path to the files to upload
+            dist
+            package.json
   deploy:
     needs: build
     runs-on: ubuntu-latest
