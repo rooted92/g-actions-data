@@ -9,13 +9,18 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Install dependencies
+      - name: Cache dependencies
+        uses: actions/cache@v3 # cache npm dependencies
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} # hashFiles produces a hash value based on the contents of the specified files. The hash key will change if the contents of package-lock.json change, so it remains dynamic.
+      - name: Install dependencies # cache these dependencies for future jobs
         run: npm ci
       - name: Lint code
         run: npm run lint
       - name: Test code
         run: npm run test
-        
+
   build:
     needs: test
     runs-on: ubuntu-latest
